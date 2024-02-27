@@ -1,6 +1,50 @@
-todo:
+Todo:
+
+**riscv 操作系统**
 
 - [ ] [实验信息概览 - 计算机组成原理（2021年） (tsinghua.edu.cn)](https://lab.cs.tsinghua.edu.cn/cod-lab-docs/labs/1-overview/)
+- [ ] Xv6
+- [ ] Linux内核实现
+
+**riscv驱动开发**
+
+**网络协议栈**
+
+**运行库开发**
+
+- [ ] 程序员的自我修养
+
+**链接 编译**
+
+- [ ] 程序员的自我修养
+
+**c++开发**
+
+- [ ] C++ prime
+- [ ] C++ 三件套
+- [ ] Qt
+- [ ] 常用第三方库
+
+**windows开发**
+
+- [ ] win32开发
+
+**Linux开发**
+
+- [ ] Linux API
+
+**Linux使用**
+
+- [ ] 鸟哥
+- [ ] Linux就该这么学
+
+**编译器开发**
+
+**模拟器开发**
+
+**fpga开发**
+
+
 
 未解之谜 
 
