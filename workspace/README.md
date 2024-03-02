@@ -5,8 +5,11 @@ Todo:
 - [ ] [实验信息概览 - 计算机组成原理（2021年） (tsinghua.edu.cn)](https://lab.cs.tsinghua.edu.cn/cod-lab-docs/labs/1-overview/)
 - [ ] Xv6
 - [ ] Linux内核实现
+- [ ] 买的操作系统网课
 
 **riscv驱动开发**
+
+- [ ] RISC-V体系结构编程与实践
 
 **网络协议栈**
 

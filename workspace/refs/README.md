@@ -6,3 +6,8 @@
 
 [RISC-V手册 (riscvbook.com)](./RISC-V-Reader-Chinese-v2p1.pdf)
 
+文档：
+
+binutils as:
+
+[Top (Using as) (sourceware.org)](https://sourceware.org/binutils/docs/as/index.html)
