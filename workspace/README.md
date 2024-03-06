@@ -2,14 +2,14 @@ Todo:
 
 **riscv 操作系统**
 
-- [ ] [实验信息概览 - 计算机组成原理（2021年） (tsinghua.edu.cn)](https://lab.cs.tsinghua.edu.cn/cod-lab-docs/labs/1-overview/)
+- [ ] [实验信息概览 - 计算机组成原理（2021 年） (tsinghua.edu.cn)](https://lab.cs.tsinghua.edu.cn/cod-lab-docs/labs/1-overview/)
 - [ ] Xv6
-- [ ] Linux内核实现
+- [ ] Linux 内核实现
 - [ ] 买的操作系统网课
 
-**riscv驱动开发**
+**riscv 驱动开发**
 
-- [ ] RISC-V体系结构编程与实践
+- [ ] RISC-V 体系结构编程与实践
 
 **网络协议栈**
 
@@ -28,28 +28,28 @@ Todo:
 - [ ] Qt
 - [ ] 常用第三方库
 
-**windows开发**
+**windows 开发**
 
-- [ ] win32开发
+- [ ] win32 开发
 
-**Linux开发**
+**Linux 开发**
 
 - [ ] Linux API
 
-**Linux使用**
+**Linux 使用**
 
 - [ ] 鸟哥
-- [ ] Linux就该这么学
+- [ ] Linux 就该这么学
 
 **编译器开发**
 
 **模拟器开发**
 
-**fpga开发**
+- [ ] https://weijiew.github.io/everystep/crvemu/README
 
+**fpga 开发**
 
-
-未解之谜 
+未解之谜
 
 ![image-20240217230148914](.\images\image-20240217230148914.png)
 
@@ -70,29 +70,22 @@ void main()
 }
 ```
 
-重定向表说.rodata+0 .rodata在000074处
+重定向表说.rodata+0 .rodata 在 000074 处
 
-可是二进制文件查看000074处的代码时2222 2222而不是hello world
+可是二进制文件查看 000074 处的代码时 2222 2222 而不是 hello world
 
+编译 application 的时候
 
+用 riscv64-linux-gun-gcc 命令 这个命令带标准库
 
-编译application的时候
+如何用 qemu-riscv64-static 命令运行 app
 
-用riscv64-linux-gun-gcc 命令 这个命令带标准库
-
-如何用qemu-riscv64-static命令运行app
-
-缺少动态库的 去/usr下面找riscv64-linux-gun-gcc 下的lib拷贝到/lib
+缺少动态库的 去/usr 下面找 riscv64-linux-gun-gcc 下的 lib 拷贝到/lib
 
 记得记录这个问题
 
+workspace 记录笔记
 
+os 目录中开一个文件夹记录作业
 
-
-
-workspace记录笔记
-
-os目录中开一个文件夹记录作业
-
-均由git仓库管理
-
+均由 git 仓库管理
