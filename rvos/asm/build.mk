@@ -1,4 +1,3 @@
-$(warning Start)
 EXEC = demo
 
 SRC = ${EXEC}.s

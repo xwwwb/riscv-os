@@ -8,3 +8,11 @@ all:
 	@${CC} ${CFLAGS} ${SRC} -Ttext=0x80000000 -o ${EXEC}.elf
 # 使用objcopy去除掉多余的节 因为CFLAGS里面是有-g的
 	@${OBJCOPY} -O binary ${EXEC}.elf ${EXEC}.bin
+
+.PHONY : hex
+hex: all
+	@hexdump -C ${EXEC}.bin
+
+.PHONY : code
+code :all
+	@${OBJDUMP} -S ${EXEC}.elf | less
