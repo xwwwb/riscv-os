@@ -1,6 +1,7 @@
 #include <stdio.h>
 int global_init = 0x11111111;
 const int global_const = 0x22222222;
+void func();
 void main()
 {
  static int static_var = 0x33333333;
