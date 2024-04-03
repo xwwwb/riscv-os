@@ -43,9 +43,12 @@ Todo:
 
 **编译器开发**
 
+[lazyparser的个人空间-lazyparser个人主页-哔哩哔哩视频 (bilibili.com)](https://space.bilibili.com/296494084/channel/collectiondetail?sid=571708)
+
 **模拟器开发**
 
 - [ ] https://weijiew.github.io/everystep/crvemu/README
+- [ ] https://www.bilibili.com/video/BV1uY4y1D7bJ
 
 **fpga 开发**
 
