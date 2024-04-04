@@ -5,17 +5,18 @@ SRCS_ASM = \
 
 SRCS_C = \
 	kernel.c \
+	uart.c \
 
 OBJS = ${SRCS_ASM:.S=.o}
 OBJS += ${SRCS_C:.c=.o}
-# OBJS = start.o kernel.o
 
 .DEFAULT_GOAL := all
 all: os.elf
 
 # start.o必须是第一个依赖 $^是所有依赖列表
 os.elf: ${OBJS}
-	${CC} ${CFLAGS} -Ttext=0x80000000 -o os.elf $^
+	@${CC} ${CFLAGS} -Ttext=0x80000000 -o os.elf $^
+	@echo -e "\x1b[32;1mCompile done! \x1b[0m"
 
 # $@是目标文件 @< 是第一个依赖名
 %.o : %.c
@@ -26,8 +27,8 @@ os.elf: ${OBJS}
 
 run: all
 	@${QEMU} -M ? | grep virt >/dev/null || exit
-	@echo "Press Ctrl-A and then X to exit QEMU"
-	@echo "------------------------------------"
+	@echo -e "\x1b[32;1mPress Ctrl-A and then X to exit QEMU\x1b[0m"
+	@echo -e "\x1b[32;1m------------------------------------\x1b[0m"
 	@${QEMU} ${QFLAGS} -kernel os.elf
 
 .PHONY : debug
