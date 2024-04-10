@@ -8,6 +8,7 @@ CROSS_COMPILE = riscv64-unknown-elf-
 # https://blog.csdn.net/weixin_43844521/article/details/133439268
 # -march. The first and most important option is -march . This tells the compiler what code it should produce for the system's processor architecture (or arch); it tells GCC that it should produce code for a certain kind of CPU.
 # -mabi https://gcc.gnu.org/onlinedocs/gcc-7.5.0/gcc/RISC-V-Options.html
+# -Wall 开启所有警告信息
 CFLAGS = -nostdlib -fno-builtin -march=rv32g -mabi=ilp32 -g -Wall
 
 # 模拟器名称

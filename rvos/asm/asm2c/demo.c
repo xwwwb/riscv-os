@@ -1,3 +1,9 @@
+// int foo(int a, int b)
+// {
+//     int c = a + *((&a) + 1);
+//     return a;
+// }
+
 int foo(int a, int b)
 {
     int c = a + b;

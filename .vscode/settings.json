@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "os.h": "c",
+        "stddef.h": "c",
+        "types.h": "c",
+        "platform.h": "c"
+    }
+}
