@@ -4,5 +4,5 @@
         "stddef.h": "c",
         "types.h": "c",
         "platform.h": "c"
-    }
+    },
 }

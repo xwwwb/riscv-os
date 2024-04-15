@@ -29,3 +29,8 @@ debug: all
 	@echo "-------------------------------------------------------"
 	@${QEMU} ${QFLAGS} -kernel ${EXEC}.elf -s -S &
 	@${GDB} ${EXEC}.elf -q -x ${GDBINIT}
+
+.PHONY : debugg
+debugg: all
+	@${QEMU} ${QFLAGS} -kernel ${EXEC}.elf -s -S &
+	@gdbgui --gdb-cmd="${GDB} ${EXEC}.elf -q -x ../gdbinit"
