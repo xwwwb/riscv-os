@@ -3,6 +3,7 @@
         "os.h": "c",
         "stddef.h": "c",
         "types.h": "c",
-        "platform.h": "c"
+        "platform.h": "c",
+        "link_script.ld": "plaintext"
     },
 }

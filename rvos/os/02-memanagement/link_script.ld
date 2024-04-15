@@ -43,8 +43,7 @@ ENTRY(_start)
  * The linker will double check this to make sure everything can fit.
  */
 MEMORY{
-	ram(wxa !ri) : ORIGIN = 0x80000000,
-	LENGTH = 128M
+	ram(wxa!ri) : ORIGIN = 0x80000000, LENGTH = 128M
 }
 
 /*
@@ -54,40 +53,37 @@ MEMORY{
 
 SECTIONS
 {
-	.text:
+	.text : {
+		PROVIDE(_text_start = .);
+		*(.text .text.*)
+		PROVIDE(_text_end = .);
+	} > ram
+
+	.rodata :
 	{
-		PROVIDE(_text_start =.);
-		/* 所有文件的.text端和.text.*端全部进入输出文件的.text段 */
-		*(.text.text.*)
-		PROVIDE(_text_end =.);
+		PROVIDE(_rodata_start = .);
+		*(.rodata .rodata.*)
+		PROVIDE(_rodata_end = .);
 	}
 	> ram
 
-	.rodata:
+	.data :
 	{
-		PROVIDE(_rodata_start =.);
-		*(.rodata.rodata.*)
-		PROVIDE(_rodata_end =.);
+		. = ALIGN(4096);
+		PROVIDE(_data_start = .);
+		*(.sdata .sdata.*) 
+		*(.data .data.*)
+		PROVIDE(_data_end = .);
 	}
 	> ram
 
-	.data:
+	.bss :
 	{
-		.= ALIGN(4096);
-		PROVIDE(_data_start =.);
-		*(.sdata.sdata.*) 
-		*(.data.data.*)
-		PROVIDE(_data_end =.);
-	}
-	> ram
-
-	.bss:
-	{
-		PROVIDE(_bss_start =.);
-		*(.sbss.sbss.*) 
-		*(.bss.bss.*) 
+		PROVIDE(_bss_start = .);
+		*(.sbss .sbss.*) 
+		*(.bss .bss.*) 
 		*(COMMON)
-		PROVIDE(_bss_end =.);
+		PROVIDE(_bss_end = .);
 	}
 	> ram
 
