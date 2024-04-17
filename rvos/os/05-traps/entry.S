@@ -72,9 +72,40 @@
 .text
 # https://stackoverflow.com/questions/50568399/what-is-the-difference-between-global-and-globl
 # .global 和 .globl 是一样的
+.globl trap_vector
+.balign 4
+trap_vector:
+    # 交换mscratch和t6的值
+    csrrw   t6, mscratch, t6
+
+    # 将当前任务的上下文保存到t6指向的内存中
+    reg_save    t6
+    # 还要额外保存一下t6
+    mv  t5, t6
+    csrr    t6, mscratch
+    sw  t6, 120(t5)
+
+    # 存储上下文指针到mscratch
+    csrw    mscratch, t5
+
+    # 接下来需要调用C语言编写的陷入处理函数
+    csrr    a0, mepc
+    csrr    a1, mcause
+    call    trap_handler
+
+    # C语言函数会将返回值放到a0里 也就是return address
+    csrw    mepc, a0
+
+    # 当调用完陷入处理函数后 要恢复上下文
+    csrr    t6, mscratch
+    reg_restore t6
+
+    # 从陷入中恢复用mret
+    mret
+
+
 .globl switch_to
 .balign 4
-
 # void switch_to(struct context *next)
 switch_to:
     # 交换mscratch和t6

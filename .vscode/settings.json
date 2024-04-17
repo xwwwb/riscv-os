@@ -1,9 +1,12 @@
 {
     "files.associations": {
+        "*.vue": "vue",
+        "*.ld": "c",
         "os.h": "c",
         "stddef.h": "c",
         "types.h": "c",
         "platform.h": "c",
-        "link_script.ld": "plaintext"
+        "link_script.ld": "plaintext",
+        "riscv.h": "c"
     },
 }
