@@ -1,7 +1,5 @@
 {
     "files.associations": {
-        "*.vue": "vue",
-        "*.ld": "c",
         "os.h": "c",
         "stddef.h": "c",
         "types.h": "c",
