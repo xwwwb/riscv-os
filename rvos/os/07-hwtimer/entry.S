@@ -78,6 +78,8 @@ trap_vector:
     # 交换mscratch和t6的值
     csrrw   t6, mscratch, t6
 
+    # 如果这里的t6是0的话 这里会运行出错 
+    # 所以如果没有创建任务的话 就运行trap_vector t6就会为0
     # 将当前任务的上下文保存到t6指向的内存中
     reg_save    t6
     # 还要额外保存一下t6
@@ -85,7 +87,7 @@ trap_vector:
     csrr    t6, mscratch
     sw  t6, 120(t5)
 
-    # 存储上下文指针到mscratch
+    # 存储上下文指针到mscratch 最开始交换了 这里换回来
     csrw    mscratch, t5
 
     # 接下来需要调用C语言编写的陷入处理函数
