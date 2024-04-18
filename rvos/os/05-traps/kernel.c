@@ -29,7 +29,7 @@ void start_kernel(void)
     // 初始化陷入
     trap_init();
 
-    // 分配测试
+    /** 分配测试开始 */
     void *test1 = page_alloc(30);
     void *test2 = page_alloc(50);
     print_addr("memory alloc test1 address", test1);
@@ -44,6 +44,7 @@ void start_kernel(void)
     page_free(test2);
     page_free(test3);
     page_free(test4);
+    /** 分配测试结束 */
 
     // 任务调度初始化
     task_init();

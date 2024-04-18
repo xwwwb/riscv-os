@@ -8,13 +8,13 @@ void trap_test()
      * Synchronous exception code = 7
      * Store/AMO access fault
      */
-    *(int *)0x00000000 = 100;
+    // *(int *)0x00000000 = 100;
 
     /*
      * Synchronous exception code = 5
      * Load access fault
      */
-    // int a = *(int *)0x00000000;
+    int a = *(int *)0x00000000;
 
     uart_puts("Yeah! I'm return back from trap!\n");
 }
