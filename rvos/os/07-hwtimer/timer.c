@@ -1,7 +1,7 @@
 #include "os.h"
 
 /* interval ~= 1s */
-#define TIMER_INTERVAL RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ
+#define TIMER_INTERVAL 10000000
 
 static uint32_t _tick = 0;
 
@@ -20,7 +20,7 @@ void timer_init()
     // 打开mstatus 中的mie中断
     w_mstatus(r_mstatus() | MSTATUS_MIE);
 
-    // 打开mine寄存器中的timer 中断
+    // 打开mie寄存器中的timer 中断
     w_mie(r_mie() | MIE_MTIE);
 }
 

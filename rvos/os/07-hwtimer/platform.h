@@ -25,22 +25,28 @@
 /** PLIC 中断寄存器的偏移 */
 /** 不同寄存器的偏移量 */
 /** https://github.com/qemu/qemu/blob/master/include/hw/riscv/virt.h */
-/** 优先级寄存器 设置某一中断源的优先级 */
+/** https://github.com/riscv/riscv-plic-spec/blob/master/riscv-plic.adoc#2-memory-map */
+/** 优先级寄存器 设置某一中断源的优先级 从PLIC_BASEADDR开始 每次增长4字节 */
 #define PLIC_PRORITY(id) (PLIC_BASEADDR + (id) * 4)
 /** 使能寄存器 中断源的开关 */
-#define PLIC_ENABLE(id) (PLIC_BASEADDR + 0x2000 + (id) * 0x80)
-/** 阈值寄存器 针对某一个hart的阈值 当中断的优先级小于等于该hart阈值 被舍掉 */
+/** 当hart为0的时候 地址就是PLIC_BASEADDR + 0x2000 此处控制着hart0的0-31位中断号 (1 << UART0_IRQ) 即打开相应hart的使能 */
+#define PLIC_ENABLE(hart) (PLIC_BASEADDR + 0x2000 + (hart) * 0x80)
+/** 阈值寄存器 针对某一个hart的阈值 当中断的优先级小于等于该hart阈值 被舍掉 每跨越一个hart加0x1000 */
 #define PLIC_THRESHOLD(hart) (PLIC_BASEADDR + 0x200000 + (hart) * 0x1000)
-/** claim寄存器 用于hart读取当前中断号 */
+/** claim寄存器 用于hart读取当前中断号  每跨域一个hart加0x1000 */
 #define PLIC_CLAIM(hart) (PLIC_BASEADDR + 0x200004 + (hart) * 0x1000)
 /** complete寄存器 用于标记该hart的中断处理完成 */
 #define PLIC_COMPLETE(hart) (PLIC_BASEADDR + 0x200004 + (hart) * 0x1000)
 
-/** 关于定时器的clint 硬件平台还存在很多问题 */
-#define RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ 10000000
+/** 这个写在virt的内存映射中 */
 #define CLINT_BASE 0x2000000L
-#define CLINT_MSIP(hartid) (CLINT_BASE + 4 * (hartid))
+/** 这两个寄存器写在了riscv特权指令标准 mtime会持续自增 大于timecmp的时候发生timer 中断
+ *  timer的使能就是mie的mtie位
+ *  这里的具体地址映射找不到依据
+ *  https://github.com/qemu/qemu/blob/62dbe54c24dbf77051bafe1039c31ddc8f37602d/hw/riscv/virt.c#L1487
+ *  只能理解为 virt采用了sifive的然后通过宏的大小计算出来的mtimecmp和mtime地址
+ */
 #define CLINT_MTIMECMP(hartid) (CLINT_BASE + 0x4000 + 8 * (hartid))
-#define CLINT_MTIME (CLINT_BASE + 0xBFF8) // cycles since boot.
+#define CLINT_MTIME (CLINT_BASE + 0xBFF8) // 启动后按照一定频率增加
 
 #endif
