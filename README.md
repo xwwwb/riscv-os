@@ -23,3 +23,8 @@ sudo apt install build-essential gcc make perl dkms git gcc-riscv64-unknown-elf 
 
 ![image-20240405002604850](./images/image-20240405002604850.png)
 
+### 内存分页
+
+### 协作式多任务
+
+### 陷入 中断 定时器
