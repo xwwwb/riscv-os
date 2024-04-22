@@ -51,5 +51,6 @@ static inline reg_t r_mie()
 }
 /** MIE寄存器的位 */
 #define MIE_MEIE (1 << 11) // machine external interrupt enable
-#define MIE_MTIE (1 << 7) // machine timer interrupt enable
+#define MIE_MTIE (1 << 7)  // machine timer interrupt enable
+#define MIE_MSIE (1 << 3)  // machine software interrupt enable
 #endif

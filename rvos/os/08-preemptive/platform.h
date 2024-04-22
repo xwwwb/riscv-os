@@ -49,4 +49,19 @@
 #define CLINT_MTIMECMP(hartid) (CLINT_BASE + 0x4000 + 8 * (hartid))
 #define CLINT_MTIME (CLINT_BASE + 0xBFF8) // 启动后按照一定频率增加
 
+/**
+ * 软中断寄存器
+ * https://github.com/qemu/qemu/blob/62dbe54c24dbf77051bafe1039c31ddc8f37602d/include/hw/intc/riscv_aclint.h#L80
+ * RISCV_ACLINT_DEFAULT_MTIMECMP      = 0x0,
+ * RISCV_ACLINT_DEFAULT_MTIME         = 0x7ff8,
+ * RISCV_ACLINT_DEFAULT_MTIMER_SIZE   = 0x8000,
+ * RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ = 10000000,
+ * RISCV_ACLINT_MAX_HARTS             = 4095,
+ * RISCV_ACLINT_SWI_SIZE              = 0x4000
+ * 所以SWI在地址映射最前面 所以 mtimecmp是0x0+0x4000=0x4000 起步
+ * mtime是也是0x7ff8+0x4000=0xBFF8
+ * CLINT_BASE 到 CLINT_BASE + 0x4000是SWI
+ * 向SWI最低位写入1触发软中断 写入0清除软中断
+ */
+#define CLINT_SWI(hartid) (CLINT_BASE + 0x0 + 4 * (hartid))
 #endif

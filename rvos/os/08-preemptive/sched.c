@@ -37,6 +37,9 @@ void task_init()
 {
     // 令当前任务指针为0
     w_mscratch(0);
+
+    // 打开MIE的软中断位
+    w_mie(r_mie() | MIE_MSIE);
 }
 
 /** 任务切换 和 任务第一次启动 */
@@ -77,7 +80,9 @@ int task_create(void (*task_function_pointer)(void))
 /** 任务切换 */
 void task_yield()
 {
-    schedule();
+    reg_t hartid = r_tp();
+    // 触发软中断
+    *(uint32_t *)CLINT_SWI(hartid) = 1;
 }
 
 /** 延迟 强行延迟 */

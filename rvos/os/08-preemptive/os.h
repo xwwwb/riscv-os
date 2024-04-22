@@ -78,6 +78,7 @@ struct context
 /** 任务管理的函数 */
 int task_create(void (*task_function_pointer)(void));
 void task_delay(volatile int count);
+void task_yield(void);
 
 /** 中断控制器 */
 int plic_claim(void);

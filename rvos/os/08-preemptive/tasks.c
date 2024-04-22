@@ -22,6 +22,8 @@ void trap_test()
 void task0(void)
 {
     printf("Task 0: Created!\n");
+    task_yield();
+    printf("Task 0: Back!\n");
     while (1)
     {
         printf("Task 0: Running...\n");
@@ -37,7 +39,7 @@ void task1(void)
     {
         printf("Task 1: Running...\n");
         task_delay(DELAY);
-       }
+    }
 }
 
 void os_main()

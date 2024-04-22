@@ -6,6 +6,8 @@ extern void trap_vector(void);
 extern void uart_receive();
 /** timer.c */
 extern void timer_handler();
+/** sched.c */
+extern void schedule(void);
 
 /** 初始化陷入 主要负责写入陷入处理函数到mtvec寄存器 */
 void trap_init()
@@ -44,13 +46,18 @@ reg_t trap_handler(reg_t mepc, reg_t mcause, reg_t mtval)
         switch (cause_code)
         {
         case 3:
-            printf("Machine software interrupt\n");
+        { // M模式的软件中断
+            reg_t hartid = r_tp();
+            *(uint32_t *)CLINT_SWI(hartid) = 0;
+            schedule();
             break;
+        }
         case 7:
             // timer中断
             timer_handler();
             break;
         case 11:
+            // 外部中断
             interrupt_handler();
             break;
         default:
