@@ -12,7 +12,9 @@ CROSS_COMPILE = riscv64-unknown-elf-
 CFLAGS = -nostdlib -fno-builtin -march=rv32g -mabi=ilp32 -g -Wall
 
 # 模拟器名称
-QEMU = qemu-system-riscv32
+QEMU = /opt/qemu-riscv32/bin/qemu-system-riscv32 # qemu 9.0.0
+# QEMU = qemu-system-riscv32 # qemu 4.2.1
+
 # 模拟器参数 
 # 无图形化 模拟串行端口在控制台上的重定向
 # 一个处理器

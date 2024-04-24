@@ -50,6 +50,16 @@ _start:
 	or	t0, t0, a1
 	csrw	mstatus, t0
 
+    # 基地址到128M设置PMP允许访问
+    # 使用TOR模式 t1是基地址 t2是基地址+128M t3是配置
+    # 这部分配置是否正确尚不明确
+    li      t1, 0x80000000
+    li      t2, 0x88000000
+    li      t3, 0x0000000f
+    csrw    pmpaddr0, t1
+    csrw    pmpaddr1, t2
+    csrw    pmpcfg0, t3
+
     j       start_kernel
 
 
