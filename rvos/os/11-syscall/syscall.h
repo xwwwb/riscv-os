@@ -1,0 +1,1 @@
+#define SYS_gethartid 1
