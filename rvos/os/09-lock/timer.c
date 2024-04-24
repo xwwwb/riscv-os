@@ -1,7 +1,7 @@
 #include "os.h"
 extern void schedule(void);
 /* interval ~= 1s */
-#define TIMER_INTERVAL 1000000
+#define TIMER_INTERVAL 10000000
 
 static uint32_t _tick = 0;
 

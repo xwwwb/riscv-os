@@ -4,7 +4,6 @@
 
 void task0(void)
 {
-    r_mstatus();
     printf("Task 0: Created!\n");
     while (1)
     {
