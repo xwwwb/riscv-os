@@ -4,7 +4,12 @@ SECTIONS = \
 	02-memanagement \
 	03-contextswitch \
 	04-multitask \
-	05-traps
+	05-traps \
+	06-interrupts \
+	07-hwtimer \
+	08-preemptive \
+	09-lock \
+	10-swtimer
 
 .DEFAULT_GOAL := all
 

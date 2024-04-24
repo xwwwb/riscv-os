@@ -10,7 +10,7 @@ struct data
 
 struct data userdata = {0, "timer test"};
 
-timer_func(void *arg)
+void timer_func(void *arg)
 {
     if (NULL == arg)
     {
@@ -57,8 +57,20 @@ void task_timer_test()
     printf("timer test start!\n");
     // 测试定时器
     struct timer *t1 = timer_create(timer_func, &userdata, 5);
+    if (t1 == NULL)
+    {
+        printf("timer create failed!\n");
+    }
     struct timer *t2 = timer_create(timer_func, &userdata, 10);
+    if (t2 == NULL)
+    {
+        printf("timer create failed!\n");
+    }
     struct timer *t3 = timer_create(timer_func, &userdata, 15);
+    if (t3 == NULL)
+    {
+        printf("timer create failed!\n");
+    }
     while (1)
     {
     }
